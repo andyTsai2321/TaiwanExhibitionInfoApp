@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  Text,
+  StatusBar,
   View,
   TextInput,
   Image,
@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Api from '../Api';
 import ActivityList from '../Components/ActivityList';
+import CategorySelectModal from '../Components/CategorySelectModal';
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -22,6 +23,22 @@ export default class HomeScreen extends Component {
       category: 1,
       isModalOpen: false,
     };
+
+    this.props.navigation.setOptions({
+      headerRight: () => this.LogoTitle(),
+    });
+  }
+
+
+  LogoTitle() {
+    return (
+      <TouchableOpacity onPress={() => this.setState({isModalOpen: true})}>
+        <Image
+          style={{width: 24, height: 24}}
+          source={require('../images/icon-filter.png')}
+        />
+      </TouchableOpacity>
+    );
   }
 
   async componentDidMount() {
@@ -48,13 +65,19 @@ export default class HomeScreen extends Component {
 
   render() {
     let {navigation} = this.props;
-    let {loading, data, filterString} = this.state;
+    let {loading, data, filterString, isModalOpen, category} = this.state;
     console.log(this.state);
     return (
       <SafeAreaView style={{flex: 1, marginTop: 20}}>
+        <StatusBar barStyle="light-content" />
+
         <View style={Style.filterBarContainer}>
           <View style={{justifyContent: 'center'}}>
-          {/* <Icon style={Style.filterBarSearchIcon} name="arrow-alt-circle-left" size={30} color="#900" /> */}
+            <Image
+              style={Style.filterBarSearchIcon}
+              source={require('../images/icon-search.png')}
+            />
+            {/* <Icon style={Style.filterBarSearchIcon} name="arrow-alt-circle-left" size={30} color="#900" /> */}
             <TextInput
               autoCapitalize="none"
               style={Style.filterInput}
@@ -88,6 +111,19 @@ export default class HomeScreen extends Component {
             onItemPress={(item) =>
               navigation.navigate('Detail', {name: item.title, item})
             }
+          />
+        )}
+        {isModalOpen && (
+          <CategorySelectModal
+            selectedCatId={category}
+            onCategorySelect={catId => {
+              this.setState(
+                {isModalOpen: false, category: catId},
+                this._fetchData,
+              );
+            }}
+            visible={isModalOpen}
+            onClose={() => this.setState({isModalOpen: false})}
           />
         )}
       </SafeAreaView>

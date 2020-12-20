@@ -3,7 +3,6 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 export default function ActivityItem(props) {
   const {item, index, itemOnPress} = props;
-  console.log(item);
   return (
     <TouchableOpacity
       onPress={itemOnPress}
@@ -20,7 +19,6 @@ export default function ActivityItem(props) {
 }
 
 const getLocation = (showInfo) => {
-  console.log(showInfo.lentgh);
   return showInfo[0] ? showInfo[0].locationName : null;
 };
 

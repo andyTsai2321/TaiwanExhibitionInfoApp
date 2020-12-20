@@ -17,6 +17,8 @@ export default class DetailScreen extends Component {
     console.log(this.props);
     return (
       <ScrollView style={{flex: 1, backgroundColor: '#fff'}}>
+        <StatusBar barStyle="light-content" />
+
         <View style={Style.wrapper}>
           <View style={Style.titleWrapper}>
             <Text style={Style.title}>{item.title}</Text>
@@ -26,7 +28,7 @@ export default class DetailScreen extends Component {
           </View>
           {item.descriptionFilterHtml !== '' && (
             <View style={Style.infoWrapper}>
-              <Text style={Style.subtitle}>描述</Text>
+              <Text style={Style.subtitle}>簡介</Text>
               <View style={Style.textWrapper}>
                 <Text style={Style.text}>{item.descriptionFilterHtml}</Text>
               </View>
@@ -76,8 +78,8 @@ const Style = StyleSheet.create({
     backgroundColor: '#fff',
   },
   titleWrapper: {
-    backgroundColor: '#4A4A4A',
-    opacity: 0.7,
+    backgroundColor: '#00171F',
+    opacity: 0.8,
     flexDirection: 'row',
     justifyContent: 'center',
     alignContent: 'center',
@@ -92,7 +94,7 @@ const Style = StyleSheet.create({
   subtitle: {
     fontSize: 15,
     color: '#fff',
-    backgroundColor: '#4A4A4A',
+    backgroundColor: '#007ea7',
     paddingVertical: 5,
     paddingHorizontal: 27,
   },
@@ -107,7 +109,7 @@ const Style = StyleSheet.create({
     backgroundColor: '#fff',
   },
   label: {
-    backgroundColor: '#4B98BE',
+    backgroundColor: '#007ea7',
     padding: 7,
     marginBottom: 10,
     alignSelf: 'flex-start',

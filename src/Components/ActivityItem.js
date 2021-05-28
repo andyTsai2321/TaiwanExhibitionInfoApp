@@ -4,9 +4,7 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 export default function ActivityItem(props) {
   const {item, index, itemOnPress} = props;
   return (
-    <TouchableOpacity
-      onPress={itemOnPress}
-      style={index % 2 == 0 ? Style.itemWrapEven : Style.itemWrapOdd}>
+    <TouchableOpacity onPress={itemOnPress} style={Style.itemWrap}>
       <Text>{item.title}</Text>
       <View style={Style.infoBox}>
         <Text>
@@ -23,10 +21,12 @@ const getLocation = (showInfo) => {
 };
 
 const Style = StyleSheet.create({
-  itemWrapEven: {
+  itemWrap: {
     paddingVertical: 20,
     paddingHorizontal: 20,
-    backgroundColor: '#fafafa',
+    borderBottomColor: '#22577a',
+    borderBottomWidth: 2,
+    backgroundColor: '#f5f0f6',
   },
   itemWrapOdd: {
     paddingVertical: 20,

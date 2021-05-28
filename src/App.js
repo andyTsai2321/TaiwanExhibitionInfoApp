@@ -1,6 +1,5 @@
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
-import {TouchableOpacity, Image, StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './Screens/HomeScreen';
@@ -8,6 +7,7 @@ import DetailScreen from './Screens/DetailScreen';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
+// GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
 
 class App extends Component {
   constructor(props) {
@@ -50,5 +50,7 @@ class App extends Component {
     );
   }
 }
+
+
 
 export default App;

@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './Screens/HomeScreen';
 import DetailScreen from './Screens/DetailScreen';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Stack = createStackNavigator();
 // GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;

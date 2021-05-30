@@ -12,6 +12,7 @@ import {
 import Api from '../Api';
 import ActivityList from '../Components/ActivityList';
 import CategorySelectModal from '../Components/CategorySelectModal';
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -33,10 +34,11 @@ export default class HomeScreen extends Component {
   LogoTitle() {
     return (
       <TouchableOpacity onPress={() => this.setState({isModalOpen: true})}>
-        <Image
-          style={{width: 24, height: 24}}
-          source={require('../images/icon-filter.png')}
-        />
+        {/*<Image*/}
+        {/*  style={{width: 24, height: 24}}*/}
+        {/*  source={require('../images/icon-filter.png')}*/}
+        {/*/>*/}
+        <Ionicons name={'funnel-outline'} size={24} style={{color: '#fff'}} />
       </TouchableOpacity>
     );
   }
